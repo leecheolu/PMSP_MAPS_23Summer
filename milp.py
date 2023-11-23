@@ -111,7 +111,42 @@ def milp_scheduling_ortools(prob:Instance):
     solver.set_time_limit(3600*1000)
     solver.EnableOutput()
     status = solver.Solve()
+    # TODO
+    # 해 출력하는 부분
+    if status == pywraplp.Solver.OPTIMAL or status == pywraplp.Solver.FEASIBLE:
+        schedule = {k: [] for k in SM}  # 각 기계에 대한 스케줄 초기화
 
+
+        for k in SM:
+            for i in SJ:
+                if y_ik[i, k].solution_value() > 0.5:  # 작업 i가 기계 k에 할당됨
+                    schedule[k].append(i)
+
+        for k in schedule:
+            sorted_schedule = sorted(schedule[k], key=lambda i: S_ik[i, k].solution_value())
+            schedule[k] = sorted_schedule
+
+
+
+        for k in range(0, len(schedule)):
+            for j in range(0, len(schedule[k])):
+                schedule[k][j] = prob.job_list[schedule[k][j]]
+
+       # 여기서부터 요소 추가하는 코드
+        for k in range(0, len(schedule)):
+            for j in range(0, len(schedule[k])):
+                schedule[k][j].end = C_ik[j,k]
+                schedule[k][j].start = s[k][i][j]
+                schedule[k][j].complete =  123
+
+# 결과 출력
+        for k in SM:
+            print(f"기계 {k}의 작업 순서: {schedule[k]}")
+
+        A = Schedule('MILP', prob, schedule)
+        draw_gantt_chart(A, prob)
+
+    # 여기까지
 
 
     if status == pywraplp.Solver.OPTIMAL:

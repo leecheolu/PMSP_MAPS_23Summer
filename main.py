@@ -1,6 +1,6 @@
 from pulp import pulp, LpStatusOptimal, LpStatus
 
-from gurobi import gurobi_milp
+# from gurobi import gurobi_milp
 from module import *
 from milp import *
 from cp import *
@@ -196,12 +196,31 @@ def test6():
 
 
 if __name__ == '__main__':
-    cp_or = test1()
-    cp = test2()
-    milp_or = test3()
-    milp = test4()
-    goruby = test5()
-    pulp = test6()
+    load_time = []
+    object = []
+    sol_status = []
+    total = {}
+    c = 0
+    with open("problem.pickle", mode='rb') as fr:
+        test_instance = pickle.load(fr)
+        values = milp_scheduling_ortools(test_instance)
+    if values != None:
+        load_time.append(0)
+        object.append(values.Objective().Value())
+        sol_status.append(values.Solve())
+    c += 1
+    total[time] = load_time
+    total[value] = object
+    total["num"] = c
+    total["answer"] = sol_status
+    print(total)
+
+    # cp_or = test1()
+    # cp = test2()
+    # milp_or = test3()
+    # milp = test4()
+    # goruby = test5()
+    # pulp = test6()
 
 
     #test_instance = generate_prob(numJob=3, numMch=2)
