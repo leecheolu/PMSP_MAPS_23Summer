@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="437fba95-2c6b-4d74-b4b0-2fda644b388c" name="변경" comment="fix : ga중복값 제거">
+    <list default="true" id="437fba95-2c6b-4d74-b4b0-2fda644b388c" name="변경" comment="milp schedule">
       <change afterPath="$PROJECT_DIR$/excel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problem.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/result.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/milp.py" beforeDir="false" afterPath="$PROJECT_DIR$/milp.py" afterDir="false" />
@@ -324,7 +326,8 @@
     <MESSAGE value="Docs : gurobi 추가" />
     <MESSAGE value="fix : ga반복문 추가" />
     <MESSAGE value="fix : ga중복값 제거" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix : ga중복값 제거" />
+    <MESSAGE value="milp schedule" />
+    <option name="LAST_COMMIT_MESSAGE" value="milp schedule" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

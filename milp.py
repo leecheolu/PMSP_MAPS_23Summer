@@ -130,7 +130,7 @@ def milp_scheduling_ortools(prob:Instance):
 
         for k in range(0, len(schedule)):
             for j in range(0, len(schedule[k])):
-                schedule[k][j] = prob.job_list[schedule[k][j]]
+                schedule[k][j] = prob.job_list[schedule[k][j]]git
 
        # 여기서부터 요소 추가하는 코드
         for k in range(0, len(schedule)):
